@@ -1,0 +1,5 @@
+*.elc
+*.~
+tramp
+.emacs.d/backups/
+.emacs.d/auto-save-list/

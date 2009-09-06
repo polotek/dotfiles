@@ -1,0 +1,7 @@
+[color]
+	ui = true
+[core]
+	editor = emacs
+[user]
+	name = Marco Rogers
+	email = marco.rogers@gmail.com
