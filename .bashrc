@@ -1,18 +1,40 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
+export USER_BASH_COMPLETION_DIR="/usr/local/etc/bash_completion.d"
+
+# bash-completion
+if [ -f /etc/bash_completion ]; then
+ . /etc/bash_completion
+fi
+
+if [ -f /opt/local/etc/bash_completion ]; then
+    . /opt/local/etc/bash_completion
+fi
+
+if [ -f /usr/local/etc/bash_completion.d/git-completion.bash ]; then
+    . /usr/local/etc/bash_completion.d/git-completion.bash
+fi
+
+export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Versions/1.6/Home
+
+export MANPATH=/opt/local/man:$MANPATH
+
+export WORKON_HOME='~/www/pyapps'
+#source ~/.virtualenvwrapper_bashrc
+
 # Don't use ^D to exit
 set -o ignoreeof
-
-# turn on minor directory spellchecking for `cd`
-shopt -s cdspell
 
 # Don't put duplicate lines in the history.
 export HISTCONTROL=ignoredups
 # huge hist files aren't a problem
 export HISTFILESIZE=1000000
 # and huge history lists are very useful
-export HISTSIZE=100000
+export HISTSIZE=10000
+
+# concurrency. mostly for compile jobs
+export JOBS=3
 
 # text editors
 export EDITOR='emacs'
@@ -29,14 +51,13 @@ alias ls='ls -Fph '
 alias sl='ls -Fph '
 alias la='ls -Fphla '
 alias ll='ls -Fphla '
+alias more='less'
+alias mroe="less"
 
-alias emacs="open -a /Applications/MacPorts/Emacs.app"
-alias visualvm="/Users/marco/bin/visualvm/bin/visualvm --jdkhome /System/Library/Frameworks/JavaVM.framework/Versions/1.6.0/Home/"
-alias mysqlstart="sudo launchctl load -w /Library/LaunchDaemons/org.macports.mysql5.plist"
-alias mysqlstop="sudo launchctl unload -w /Library/LaunchDaemons/org.macports.mysql5.plist"
+alias node-repl='NODE_NO_READLINE=1 rlwrap node-repl'
 #  misspellings
 alias exti="exit"
-alias mroe="less"
+
 
 ###################################################
 #  Functions
@@ -65,7 +86,7 @@ function setprompt {
         CYGWIN* | Linux* | Darwin*)
             # black background
             historyBlock="$BLUE[$LIGHT_GRAY\!$BLUE]"
-            pathBlock="$BLUE[$RED\w$BLUE]"
+            pathBlock="$BLUE[$RED\w\$(__git_ps1 '(%s)')$BLUE]"
             userHostBlock="$BLUE[$RED\u$LIGHT_GRAY"@"$RED\h$BLUE]"
             #promptChar="$BOLD_WHITE\$$LIGHT_GRAY"
             promptChar="$BOLD_WHITE\$$NO_COLOR"
@@ -110,53 +131,6 @@ function .. (){
   cd $dir >&/dev/null
 }
 
-#--------------------------------------------------
-#    Extracts most files, mostly
-#--------------------------------------------------
-
-extract () {
-  if [ -f $1 ] ; then
-    case $1 in
-      *.tar.bz2)  tar xjf $1    ;;
-      *.tar.gz)   tar xzf $1    ;;
-      *.bz2)      bunzip2 $1    ;;
-      *.rar)      rar x $1      ;;
-      *.gz)       gunzip $1     ;;
-      *.tar)      tar xf $1     ;;
-      *.tbz2)     tar xjf $1    ;;
-      *.tgz)      tar xzf $1    ;;
-      *.zip)      unzip $1      ;;
-      *.Z)        uncompress $1 ;;
-      *)          echo "'$1' cannot be extracted via extract()" ;;
-    esac
-  else
-    echo "'$1' is not a valid file"
-  fi
-}
-
-#--------------------------------------------------
-#    Greps ps -e for you
-#--------------------------------------------------
-
-psg() {
-  if [ ! -z "$1" ] ; then
-    ps aux | grep -i "$1" | grep -v grep
-  else
-    echo "Need a proces name to grep processes for"
-  fi
-}
-
-#--------------------------------------------------
-#    Greps history
-#--------------------------------------------------
-
-histg() {
-  if [ ! -z "$1" ] ; then
-    history | grep "$1" | grep -v histg
-  else
-    echo "Need a command to grep history for"
-  fi
-}
 
 # Call the method that initilizes the prompt
 setprompt
