@@ -1,3 +1,6 @@
+# Why doesn't /usr/local/bin come before /usr/bin ?!!
+export PATH=/usr/local/bin:/usr/local/sbin:$PATH
+
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
