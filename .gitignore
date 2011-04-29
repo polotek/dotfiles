@@ -1,6 +1,6 @@
 *.elc
-*.~
-tramp
+*~
+.emacs.d/tramp
 .emacs.d/backups/
 .emacs.d/auto-save-list/
 .emacs.d/auto_saves/
