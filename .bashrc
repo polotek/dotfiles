@@ -57,8 +57,9 @@ alias ll='ls -Fphla '
 alias more='less'
 alias mroe="less"
 
-alias node-repl='NODE_NO_READLINE=1 rlwrap node-repl'
-#  misspellings
+alias gitf="git-flow"
+
+# misspellings
 alias exti="exit"
 
 
@@ -116,7 +117,7 @@ function setprompt {
     esac
     
     # prompt structure
-    PS1="$historyBlock$userHostBlock$pathBlock $promptChar "
+    PS1="$userHostBlock$pathBlock $promptChar "
     PS2="$ps2arrow"
 }
 
