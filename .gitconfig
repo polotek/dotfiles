@@ -4,5 +4,10 @@
 	editor = emacs
 	autocrlf = input
 	safecrlf = true
+
 [alias]
   hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+  s = status
+  f = flow
+  d = diff
+  di = diff --cached
