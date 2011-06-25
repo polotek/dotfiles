@@ -40,9 +40,9 @@ export HISTSIZE=10000
 export JOBS=3
 
 # text editors
-export EDITOR='emacs'
-export VISUAL='emacs'
-export GIT_EDITOR='emacs'
+export EDITOR='emacsclient --alternate-editor=emacs'
+export VISUAL='emacsclient --alternate-editor=emacs'
+export GIT_EDITOR='emacsclient --alternate-editor=emacs'
 
 #other handy things
 export CLICOLOR="t"
@@ -50,18 +50,18 @@ export CLICOLOR="t"
 ##############################################################
 #                      Aliases
 ##############################################################
-alias ls='ls -Fph '
-alias sl='ls -Fph '
-alias la='ls -Fphla '
-alias ll='ls -Fphla '
-alias more='less'
-alias mroe="less"
+alias ls="ls -Fph "
+alias sl="ls -Fph "
+alias la="ls -Fphla "
+alias ll="ls -Fphla "
+alias more="less"
 
 alias gitf="git-flow"
 
 # misspellings
 alias exti="exit"
-
+alias mroe="less"
+alias claer="clear"
 
 ###################################################
 #  Functions
@@ -141,3 +141,4 @@ setprompt
 
 # set the command window title to user@hostname:
 PROMPT_COMMAND='echo -ne "\033]0;${PWD/$HOME/~} - ${USER}@${HOSTNAME}\007"'
+

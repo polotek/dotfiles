@@ -1,0 +1,10 @@
+{
+    "es5": true
+    , "immed": true
+    , "laxbreak": true
+    , "newcap": true
+    , "noarg": true
+    , "nonew": true
+    , "undef": true
+    , "sub": true
+}

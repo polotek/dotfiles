@@ -1,0 +1,3 @@
+[submodule "emacs-starter-kit"]
+	path = emacs-starter-kit
+	url = git@github.com:polotek/emacs-starter-kit

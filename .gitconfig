@@ -1,13 +1,13 @@
 [color]
 	ui = true
 [core]
-	editor = emacs
+	editor = emacsclient --alternate-editor=emacs
 	autocrlf = input
 	safecrlf = true
-
 [alias]
-  hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
-  s = status
-  f = flow
-  d = diff
-  di = diff --cached
+        hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+        s = status
+        f = flow
+        d = diff
+        di = diff --cached
+        co = checkout
