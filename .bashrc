@@ -1,5 +1,5 @@
 # Why doesn't /usr/local/bin come before /usr/bin ?!!
-export PATH=/usr/local/bin:/usr/local/sbin:$PATH
+export PATH=/usr/local/bin:/usr/local/sbin:$PATH:$HOME/bin:$HOME/.git-hooks
 
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
@@ -40,9 +40,9 @@ export HISTSIZE=10000
 export JOBS=3
 
 # text editors
-export EDITOR='emacsclient --alternate-editor=emacs'
-export VISUAL='emacsclient --alternate-editor=emacs'
-export GIT_EDITOR='emacsclient --alternate-editor=emacs'
+#export EDITOR='emacsclient --alternate-editor=emacs'
+#export VISUAL='emacsclient --alternate-editor=emacs'
+#export GIT_EDITOR='vi'
 
 #other handy things
 export CLICOLOR="t"
@@ -56,12 +56,19 @@ alias la="ls -Fphla "
 alias ll="ls -Fphla "
 alias more="less"
 
-alias gitf="git-flow"
+alias pull="git pull"
+alias d="git diff"
+alias di="git diff --cached"
+alias stash="git stash"
+alias log="git log -n"
 
 # misspellings
+alias gti="git"
 alias exti="exit"
 alias mroe="less"
 alias claer="clear"
+
+alias rake="bundle exec rake"
 
 ###################################################
 #  Functions

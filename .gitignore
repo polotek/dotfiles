@@ -1,6 +1,9 @@
+.DS_Store
 *.elc
 *~
 tramp
 .emacs.d/backups/
 .emacs.d/auto-save-list/
 .emacs.d/auto_saves/
+*.sublime-project
+*.sublime-workspace
