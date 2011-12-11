@@ -1,5 +1,10 @@
 [color]
 	ui = true
+[color "diff"]
+        meta = yellow bold
+        frag = cyan bold
+        old = red bold
+        new = green bold
 [core]
 	excludesfile = $HOME/.gitignore
 	autocrlf = input
