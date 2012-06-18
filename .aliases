@@ -1,0 +1,16 @@
+alias ls="ls -Fph"
+alias la="ls -Fphla"
+alias ll="ls -Fphla"
+
+alias pull="git pull"
+alias push="git push"
+alias d="git d"
+alias di="git di"
+alias stash="git stash"
+alias log="git log -n"
+
+# misspellings
+alias gti="git"
+alias gits="git s"
+alias exti="exit"
+alias claer="clear"
