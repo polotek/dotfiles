@@ -1,19 +1,24 @@
 [color]
-	ui = true
+        ui = true
 [color "diff"]
         meta = yellow bold
         frag = cyan bold
         old = red bold
         new = green bold
 [core]
-	excludesfile = $HOME/.gitignore
-	autocrlf = input
-	safecrlf = true
+        excludesfile = /Users/polotek/.gitignore
+        autocrlf = input
+        safecrlf = true
+[push]
+        default = current
+[user]
+        name = Marco Rogers
 [alias]
         hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
-        s = status
-        f = flow
+        b = branch
         d = diff
+        f = flow
+        s = status
         di = diff --cached
         co = checkout
         ci = commit
