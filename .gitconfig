@@ -13,6 +13,10 @@
         default = current
 [user]
         name = Marco Rogers
+[apply]
+        whitespace = strip
+[rerere]
+        enabled = true
 [alias]
         hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
         b = branch
