@@ -1,0 +1,55 @@
+#!/usr/bin/env node
+
+/*
+ * This is a git script that makes it easier to stash and unstash
+ * multiple patches in a dirty working tree. This is a first draft
+ * taken from this approach
+ * http://stackoverflow.com/questions/1360712/git-stash-cannot-apply-to-a-dirty-working-tree-please-stage-your-changes
+ * 
+ * It's written with javascript for node.js, because I wanted to explore scripting
+ * with node.
+ *
+ * Save this file as "git-stash" somewhere in your path. and you can do `git unstash`
+ * into a dirty working tree. Or `git unstash stash@{2}`
+ */
+
+var spawn = require('child_process').spawn
+  , nopt = require('nopt');
+
+var opts = {
+  quiet: Boolean
+  , index: Boolean
+}
+, shorts = {
+  q: [ '--quiet' ]
+}
+, parsed = nopt(opts, shorts)
+, ender = function(exit, signal) {
+  this.stdout.emit('end');
+  this.stderr.emit('end');
+}
+
+var stashName = parsed.remain && parsed.remain[0]
+  , patch = spawn('git', ['stash', 'show', '-p', stashName])
+      .on('exit', ender)
+  , apply = spawn('git', ['apply'])
+      .on('exit', ender)
+      .on('exit', function(exit, signal) {
+        if(exit > 0) {
+          process.exit(exit);
+          return;
+        }
+
+        var args = ['stash', 'drop'];
+
+        if(stashName) { args.push(stashName); }
+
+        var drop = spawn('git', args).on('exit', ender);
+        drop.stdout.pipe(process.stdout);
+        drop.stderr.pipe(process.stderr);
+      });
+
+apply.stdout.pipe( process.stdout );
+apply.stderr.pipe( process.stderr );
+
+patch.stdout.pipe( apply.stdin );
