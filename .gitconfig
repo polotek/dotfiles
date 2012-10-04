@@ -1,28 +1,30 @@
 [color]
-        ui = true
+    ui = true
 [color "diff"]
-        meta = yellow bold
-        frag = cyan bold
-        old = red bold
-        new = green bold
+    meta = yellow bold
+    frag = cyan bold
+    old = red bold
+    new = green bold
 [core]
-        excludesfile = /Users/polotek/.gitignore
-        autocrlf = input
-        safecrlf = true
+    excludesfile = ~/.gitignore
+#    autocrlf = input
+#    safecrlf = true
 [push]
-        default = current
-[user]
-        name = Marco Rogers
-[apply]
-        whitespace = strip
-[rerere]
-        enabled = true
+    default = current
 [alias]
-        hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
-        b = branch
-        d = diff
-        f = flow
-        s = status
-        di = diff --cached
-        co = checkout
-        ci = commit
+    hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --grapdate=short
+    l = log -1 --oneline
+    s = status
+    f = flow
+    d = diff
+    di = diff --cached
+    co = checkout
+    ci = commit
+    b = branch
+    start = flow feature start
+    finish = flow feature finish
+[apply]
+    whitespace = strip
+
+[rerere]
+    enabled = true

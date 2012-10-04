@@ -6,8 +6,8 @@ if [ -f /etc/bash_completion ]; then
  . /etc/bash_completion
 fi
 
-if [ -f /opt/local/etc/bash_completion ]; then
-    . /opt/local/etc/bash_completion
+if [ -f /usr/local/etc/bash_completion.d/git-completion.bash ]; then
+    . /usr/local/etc/bash_completion.d/git-completion.bash
 fi
 
 # Don't use ^D to exit
@@ -32,14 +32,17 @@ export GIT_EDITOR='vi'
 export CLICOLOR="t"
 
 # Aliases
-source .aliases
+if [ -f ~/.aliases ]; then
+    . ~/.aliases
+fi
+
 
 ###################################################
 #  Functions
 ###################################################
 
 #--------------------------------------------------
-#    Initializes informative and pretty prompts
+#  Initializes informative and pretty prompts
 #--------------------------------------------------
 function setprompt {
 
@@ -65,7 +68,7 @@ function setprompt {
             userHostBlock="$BLUE[$RED\u$LIGHT_GRAY"@"$RED\h$BLUE]"
             #promptChar="$BOLD_WHITE\$$LIGHT_GRAY"
             promptChar="$BOLD_WHITE\$$NO_COLOR"
-
+            
             ps2arrow="$BLUE-$BOLD_WHITE> $NO_COLOR"
         ;;
 

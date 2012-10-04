@@ -2,12 +2,14 @@ alias ls="ls -Fph"
 alias la="ls -Fphla"
 alias ll="ls -Fphla"
 
+alias ss="git status"
 alias pull="git pull"
 alias push="git push"
 alias d="git d"
 alias di="git di"
 alias stash="git stash"
 alias log="git log -n"
+alias co="git checkout"
 
 # misspellings
 alias gti="git"
