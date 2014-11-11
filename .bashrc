@@ -30,7 +30,7 @@ export JOBS=3
 # text editors
 export EDITOR='subl'
 export VISUAL='subl'
-export GIT_EDITOR='vi'
+export GIT_EDITOR='vim'
 
 #other handy things
 export CLICOLOR="t"
@@ -40,6 +40,7 @@ if [ -f ~/.aliases ]; then
     . ~/.aliases
 fi
 
+export PATH=$PATH:~/bin
 
 ###################################################
 #  Functions
