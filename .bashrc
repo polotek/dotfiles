@@ -1,6 +1,15 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
+###################################################
+#  Config files
+###################################################
+
+# Aliases
+if [ -f ~/.aliases ]; then
+    . ~/.aliases
+fi
+
 # bash-completion
 if [ -f /etc/bash_completion ]; then
  . /etc/bash_completion
@@ -14,8 +23,10 @@ if [ -f /usr/local/etc/bash_completion.d/git-prompt.sh ]; then
     . /usr/local/etc/bash_completion.d/git-prompt.sh
 fi
 
-# Don't use ^D to exit
-set -o ignoreeof
+
+###################################################
+#  Export variables
+###################################################
 
 # Don't put duplicate lines in the history.
 export HISTCONTROL=ignoredups
@@ -35,12 +46,12 @@ export GIT_EDITOR='vim'
 #other handy things
 export CLICOLOR="t"
 
-# Aliases
-if [ -f ~/.aliases ]; then
-    . ~/.aliases
-fi
+# python
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/src
 
 export PATH=$PATH:~/bin
+
 
 ###################################################
 #  Functions
@@ -100,8 +111,22 @@ function setprompt {
     PS2="$ps2arrow"
 }
 
+
+###################################################
+#  Execute
+###################################################
+
 # Call the method that initilizes the prompt
 setprompt
 
 # set the command window title to user@hostname:
 PROMPT_COMMAND='echo -ne "\033]0;${PWD/$HOME/~} - ${USER}@${HOSTNAME}\007"'
+
+# Don't use ^D to exit
+set -o ignoreeof
+
+# ruby environments
+# echo 'eval "$(rbenv init -)"' >> ~/.bash_profile
+
+# python environments
+# source /usr/local/bin/virtualenvwrapper.sh
