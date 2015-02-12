@@ -12,7 +12,7 @@
 [push]
     default = current
 [alias]
-    hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --grapdate=short
+    hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
     l = log -1 --oneline
     s = status
     f = flow
@@ -28,3 +28,6 @@
 
 [rerere]
     enabled = true
+[user]
+    name = Marco Rogers
+#     email = 
