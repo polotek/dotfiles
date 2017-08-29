@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+echo "installing user configs"
+for i in .bashrc .bash_profile .aliases .ackrc .gitconfig .gitignore .inputrc; do
+  if [ -f "$i" ]; then
+    echo "$i"
+    cp ./$i ~/
+  fi
+done
+echo "done."
+
+echo "installing user scripts"
+mkdir ~/bin
+cp ./bin/* ~/bin/
