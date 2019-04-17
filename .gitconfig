@@ -21,8 +21,6 @@
     co = checkout
     ci = commit
     b = branch
-    start = flow feature start
-    finish = flow feature finish
 [apply]
     whitespace = strip
 
@@ -30,4 +28,4 @@
     enabled = true
 [user]
     name = Marco Rogers
-#     email = 
+#     email =
