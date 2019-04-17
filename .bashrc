@@ -5,6 +5,11 @@
 #  Config files
 ###################################################
 
+# Environment Variables
+if [ -f ~/.env ]; then
+    . ~/.env
+fi
+
 # Aliases
 if [ -f ~/.aliases ]; then
     . ~/.aliases
@@ -22,35 +27,6 @@ fi
 if [ -f /usr/local/etc/bash_completion.d/git-prompt.sh ]; then
     . /usr/local/etc/bash_completion.d/git-prompt.sh
 fi
-
-
-###################################################
-#  Export variables
-###################################################
-
-# Don't put duplicate lines in the history.
-export HISTCONTROL=ignoredups
-# huge hist files aren't a problem
-export HISTFILESIZE=1000000
-# and huge history lists are very useful
-export HISTSIZE=10000
-
-# concurrency. mostly for compile jobs
-export JOBS=3
-
-# text editors
-export EDITOR='subl'
-export VISUAL='subl'
-export GIT_EDITOR='vim'
-
-#other handy things
-export CLICOLOR="t"
-
-# python
-export WORKON_HOME=$HOME/.virtualenvs
-export PROJECT_HOME=$HOME/src
-
-export PATH=$PATH:~/bin
 
 
 ###################################################
@@ -84,7 +60,7 @@ function setprompt {
             userHostBlock="$BLUE[$RED\u$LIGHT_GRAY"@"$RED\h$BLUE]"
             #promptChar="$BOLD_WHITE\$$LIGHT_GRAY"
             promptChar="$BOLD_WHITE\$$NO_COLOR"
-            
+
             ps2arrow="$BLUE-$BOLD_WHITE> $NO_COLOR"
         ;;
 
