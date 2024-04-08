@@ -10,3 +10,5 @@ alias gti="git"
 alias gits="git s"
 alias exti="exit"
 alias claer="clear"
+
+alias senv="env | sort"
