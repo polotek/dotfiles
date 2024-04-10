@@ -1,10 +1,12 @@
-## Config files
+## Pre-requisites
 
-These are all of my standard config files for unix environments (including OS X)
+You need **git** and **homebrew** installed and in your path. Consider running [strap](https://strap.mikemcquaid.com/) to get everything setup.
 
 ## Installation
 
-* Copy all of the .dotfiles to `~/` (home dir)
-* Copy bin files to `~/bin` (create if necessary)
+Note: If you use `strap.sh`, and it runs successfully, it should do all of these things for you.
 
-The `completion` folder contains git completion and prompt enhancements. You shouldn't need these. They're already referenced in `.bashrc`. But this assumes an install of git that comes with these files. If you don't have them on OS X, you can usually get them with `brew install git`.
+* Install the dependencies in `Brewfile`. If you use strap.sh, it will do this for you.
+* Run `scripts/setup`. It should do the following:
+   * Copy all of the .dotfiles to `~/` (home dir)
+   * Copy bin files to `~/bin` (create if necessary)
