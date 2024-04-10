@@ -2,10 +2,13 @@
     ui = true
 [core]
     excludesfile = ~/.gitignore
+    editor = "code --wait"
 #    autocrlf = input
 #    safecrlf = true
 [push]
     default = current
+[pull]
+    ff = only
 [alias]
     hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
     l = log -1 --oneline
